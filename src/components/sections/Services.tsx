@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wrench, Settings2, ShieldAlert, Navigation, Compass, ActivitySquare } from "lucide-react";
+import { Wrench, Settings2, ActivitySquare, Disc, Activity, Octagon } from "lucide-react";
 
 const services = [
     {
@@ -18,17 +18,17 @@ const services = [
     {
         title: "Clutch Replacements",
         description: "High-performance and OEM standard clutch fitting for smooth, reliable power delivery.",
-        icon: Compass,
+        icon: Disc,
     },
     {
         title: "Suspension",
         description: "Component upgrades and replacements for ultimate vehicle handling and ride comfort.",
-        icon: Navigation,
+        icon: Activity,
     },
     {
         title: "Brake Repairs",
         description: "Pad, disc, and hydraulic system servicing ensuring maximum stopping power and safety.",
-        icon: ShieldAlert,
+        icon: Octagon,
     },
     {
         title: "MOTs",
