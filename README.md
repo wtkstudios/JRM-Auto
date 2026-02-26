@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JRM Autos – Premium Mechanic Website
 
-## Getting Started
+A premium, mobile-first website for **JRM Autos**, a Coventry (UK) mechanic garage with close to 20 years of operation. Built with Next.js 14, TailwindCSS, shadcn/ui, and Framer Motion.
 
-First, run the development server:
+## Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+All business constants (phone, address, opening hours, Google links) are in a single file:
 
-## Learn More
+```
+src/lib/site.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+Update these values before going live:
+- `phone` – Your actual phone number
+- `address` – Full workshop address
+- `emailTo` – Contact email
+- `googleProfileUrl` – Your Google Business Profile URL
+- `googleMapsUrl` – Direct Google Maps link to your workshop
+- `whatsapp` – (Optional) WhatsApp number
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+All images are in `public/images/`. Replace or add:
 
-## Deploy on Vercel
+| File | Usage |
+|------|-------|
+| `carbon.jpg` | Subtle background texture (5-10% opacity) |
+| `wires.jpg` | Hero background image |
+| `spanner.jpg` | Watermark accent in Services section |
+| `logo red.png` | Red logo variant |
+| `logo yellow hype.png` | Gold/yellow logo variant |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with fonts, metadata, SEO
+│   ├── page.tsx            # Main landing page (assembles all sections)
+│   ├── globals.css         # Design tokens, carbon texture, base styles
+│   └── privacy/
+│       └── page.tsx        # Privacy policy placeholder
+├── components/
+│   ├── sections/
+│   │   ├── Header.tsx      # Sticky header + mobile Sheet menu
+│   │   ├── Hero.tsx        # Hero with CTAs + trust badges
+│   │   ├── Services.tsx    # 6 service cards grid
+│   │   ├── Trust.tsx       # Why JRM Autos section
+│   │   ├── GoogleProfile.tsx # Reviews + Google link
+│   │   ├── Location.tsx    # Address, hours, map embed
+│   │   ├── Contact.tsx     # Validated booking form
+│   │   └── Footer.tsx      # Footer with links
+│   └── ui/                 # shadcn/ui components
+│       └── shared/
+│           └── ScrollProgress.tsx
+└── lib/
+    ├── site.ts             # All business constants
+    └── utils.ts            # shadcn utility (cn)
+```
+
+## Tech Stack
+
+- **Next.js 14** (App Router) + TypeScript
+- **TailwindCSS** for styling
+- **shadcn/ui** for UI primitives
+- **Framer Motion** for animations
+- **react-hook-form** + **zod** for form validation
+- **lucide-react** for icons
+
+## Contact Form
+
+The contact form currently logs to console on submit. To integrate with an email service:
+
+1. Create `src/app/api/contact/route.ts`
+2. Install Resend: `npm install resend`
+3. Add your Resend API key to `.env.local`
+4. Wire up the form submission in `Contact.tsx`
+
+## Color Palette
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Primary Red | `#B3001B` | CTAs, accents |
+| Accent Gold | `#F0A202` | Primary buttons, highlights |
+| Dark Base | `#121212` | Backgrounds |
+| Steel/Teal | `#84BCBE` | Secondary text, icons |
+| Off-White | `#F3F3F4` | Body text on dark |
+| Surface | `#353535` | Card backgrounds, borders |

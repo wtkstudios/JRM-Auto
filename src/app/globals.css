@@ -2,28 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 7%;      /* Very dark, near black #121212 */
+    --foreground: 0 0% 95%;     /* Off-white #F3F3F4 */
+    
+    --card: 0 0% 12%;           /* Slightly lighter dark */
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Primary red: #B3001B -> HSL approx 351, 100%, 35% */
+    --primary: 351 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary steel: #84BCBE -> HSL approx 182, 28%, 63% */
+    --secondary: 182 28% 63%;
+    --secondary-foreground: 0 0% 10%;
+    
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 70%;
+    
+    /* Accent gold: #F0A202 -> HSL approx 40, 98%, 47% */
+    --accent: 40 98% 47%;
+    --accent-foreground: 0 0% 10%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 351 100% 35%;
+    
+    --radius: 1rem; /* 16px as requested */
+  }
+
+  .dark {
+    /* Same as root since we default to dark theme */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 351 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 182 28% 63%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 40 98% 47%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 351 100% 35%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-jrm-gold selection:text-jrm-dark;
+    
+    /* Deep carbon fiber background overlay */
+    background-image: 
+      linear-gradient(to right, rgba(18, 18, 18, 0.96), rgba(18, 18, 18, 0.94)),
+      url('/images/carbon.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
 }
 
 @layer utilities {
