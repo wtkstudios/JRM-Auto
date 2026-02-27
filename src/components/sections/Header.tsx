@@ -11,7 +11,7 @@ export function Header() {
             <div className="container mx-auto px-4 h-20 flex items-center justify-between">
                 {/* Brand - Centered on Mobile, Left on Desktop */}
                 <div className="absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 h-full flex items-center z-50">
-                    <Link href="/" className="h-full py-2 flex items-center relative">
+                    <Link href="/" className="h-full py-1 flex items-center relative">
                         <Image
                             src="/images/logo yellow hype.png"
                             alt="JRM Auto Coventry"
